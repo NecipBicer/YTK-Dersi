@@ -1,0 +1,69 @@
+@startuml
+left to right direction
+skinparam packagStyle rectangle
+actor Hasta
+actor Admin
+
+rectangle Hastane\tOtomasyonu {
+(Randevu\nAlmak) as (Use2)
+(Dilek ve Şikayet\nBildirmek) as (Use1)
+(Sistemi Yönetmek) as (Use3)
+
+Hasta --(Use2)
+Hasta --(Use1)
+
+left to right direction
+
+
+Admin --(Use3)
+(Use3).>(Üye Girişi):include
+(Use1).>(Üye Girişi) :include
+(Use1)<.(Yorum yapmak) :extend
+(Üye Girişi) .>(Üye Olmak):include
+
+
+}
+
+Hasta<|-- Admin
+
+
+@enduml
+//Randevu Almak kısmının içerdikleri
+
+@startuml
+left to right direction
+
+
+skinparam packageStyle rectangle
+rectangle Hastane\tOtomasyonu{
+
+(Randevu Almak) as (Use1)
+(Use1) .>(Doktor Seçimi) : include
+(Use1) .>(Muayene Bölümü\nSeçimi) :include
+(Use1) .>(Tarih ve Zaman\nSeçimi) :include
+(Rapor Almak) .> (Use1) :extend
+(Mail Olarak\n Rapor Almak) .>(Rapor Almak):extend
+
+}
+
+
+@enduml
+//Sistemi Yönetmek kısmının içerdikleri
+@startuml
+left to right direction
+skinparam packagStyle rectangle
+
+rectangle Hastane\tOtomasyonu {
+(Sistemi\nYönetmek) as (Use1)
+(Randevu Bilgileri\n Almak) as (Use2) 
+(Use1).>(Üye Girişi) : include
+(Use2) .>(Use1):extend
+(Use2).>(Kullanıcı Bilgisi):include
+(Use2).>(Randevu Tarihleri):include
+
+
+}
+
+
+
+@enduml
