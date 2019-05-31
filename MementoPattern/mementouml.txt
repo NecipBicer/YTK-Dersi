@@ -1,0 +1,34 @@
+@startuml
+
+ class Randevu{
++ String hasta
++ String hastaAl()
++ void hastaAta(String hasta)
++ RandevuGecmisi hatırlayıcıYarat()
++ void GecmiseBak (RandevuGecmisi gecmis)
+
+}
+
+class RandevuGecmisi{
++ Stirng randevu
++ String icerikAl()
+}
+class RandevuEklemeSistemi{
++ Randevu randevu
++ List <RandevuGecmisi> gecmisHastaListesi
++ void KisiEkle(String yeniKisi)
++ void geriAl()
+}
+
+
+
+
+
+
+
+RandevuGecmisi "1" --o "1" RandevuEklemeSistemi
+Randevu --> RandevuGecmisi
+
+
+
+@enduml
