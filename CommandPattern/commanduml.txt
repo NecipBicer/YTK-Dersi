@@ -1,0 +1,42 @@
+@startuml
+
+abstract class Komut{
++ void calistir()
+}
+
+class RandevuOnayButonu{
++ Randevu randevu
+}
+class RandevuIptalButonu{
++ Randevu randevu
++ void calistir()
+}
+class RandevuGuncelleButonu{
++ Randevu randevu
++ void calistir()
+}
+class Randevu{
++ void onay()
++ void iptal()
++ void guncelle()
+}
+class Sistem{
++ Komut gorev
++ void setGorev()
++ void SistemCalistirildi()
+}
+
+
+
+
+
+RandevuOnayButonu ..|> Komut
+RandevuIptalButonu ..|> Komut
+RandevuGuncelleButonu ..|> Komut
+Komut "1" --o "1" Sistem
+Randevu "1" --o "1" RandevuOnayButonu
+Randevu "1" --o "1" RandevuGuncelleButonu
+Randevu "1" --o "1" RandevuIptalButonu
+
+
+@enduml
