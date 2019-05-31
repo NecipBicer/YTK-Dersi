@@ -1,0 +1,68 @@
+@startuml
+
+class  Uye <<abstract>>  {
+-isim:String
+-id:String
+-sifre:String
++void setId(String)
++String getId()
++void setIsim(String)
++String getIsim()
++void setSifre(String)
++String getSifre()
+}
+class Hasta{
++dogumTarihi:String
++kimlikNo:String
++babaAdi:String
++void randevuAl()
+
+}
+class Admin{
++ adminNo:int
+
++void sistemiYonet()
+}
+class Rapor{
++raporNo:String
++sonuc:String
++void raporAl()
+
+}
+class Randevu{
+-randevuNo:int
+-randevuTarih:String
+-randevuBolum:String
+-randevuDoktor:String
++void setRandevuNo(int)
++int getRandevuNo()
++void setRandevuTarih(String)
++String getRandevuTarih()
++void setRandevuBolum(String)
++String getRandevuBolum()
++void setRandevuDoktor(String)
++String getRandevuDoktor()
+
+}
+class Fatura{
++faturaNo:int
++faturaUcret:int
++faturaTarih:int
+}
+class Sistem{
+
++ void randevuKontrol()
++ void sistemBakimi()
+
+}
+Uye<|--Hasta
+Uye<|--Admin
+Rapor "1" *-- "1" Hasta
+Randevu "1..*"*--"1" Hasta
+Sistem "1" o-- "1..*" Admin :yonetir
+Fatura "1" *-- "1" Hasta
+
+
+
+
+@enduml
