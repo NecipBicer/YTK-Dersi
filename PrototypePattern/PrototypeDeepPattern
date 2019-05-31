@@ -1,0 +1,75 @@
+
+package prototype;
+
+class RandevuBolum implements Cloneable
+{
+    String rnd;
+
+ 
+    
+ 
+    public RandevuBolum(String rnd)
+    {
+        this.rnd = rnd;
+ 
+        
+    }
+ 
+    protected Object clone() throws CloneNotSupportedException
+    {
+        return super.clone();
+    }
+}
+ 
+class hasta implements Cloneable
+{
+    int id;
+ 
+    String name;
+ 
+    RandevuBolum randevubolum;
+ 
+    public hasta(int id, String name, RandevuBolum randevubolum)
+    {
+        this.id = id;
+ 
+        this.name = name;
+ 
+        this.randevubolum = randevubolum;
+    }
+ 
+   
+    protected Object clone() throws CloneNotSupportedException
+    {
+        hasta hasta = (hasta) super.clone();
+ 
+        hasta.randevubolum = (RandevuBolum) randevubolum.clone();
+ 
+        return hasta;
+    }
+}
+ 
+public class prototypeDeep
+{
+    public static void main(String[] args)
+    {
+        RandevuBolum randevubolum = new RandevuBolum("Dahiliye");
+ 
+        hasta hasta1 = new hasta(444, "necip", randevubolum);
+ 
+        
+ 
+        try
+        {
+            
+ 
+          hasta  hasta2 = (hasta) hasta1.clone();
+        }
+        catch (Exception e)
+        {
+           
+        }
+ 
+      
+    }
+}
