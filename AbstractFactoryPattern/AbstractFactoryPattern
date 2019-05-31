@@ -1,0 +1,60 @@
+
+package builderpattern;
+
+
+ interface Kisi {
+    public String unvan();
+}
+interface KisiSoyutOlusturma{
+    public  Kisi kisiOlustur();
+}
+class Doktor implements Kisi{
+
+    @Override
+    public String unvan() {
+        return "Doktor";
+        }
+    
+}
+class hasta implements Kisi{
+
+    @Override
+    public String unvan() {
+        return "hasta";
+        }
+    
+}
+class DoktorUretme implements KisiSoyutOlusturma{
+
+   
+    public  Kisi kisiOlustur() {
+    return new Doktor();   
+    }
+    
+}
+class HastaUretme implements KisiSoyutOlusturma{
+
+    @Override
+    public Kisi kisiOlustur() {
+    return new hasta();    
+    }
+    
+}
+class KisiUretme {
+    public static Kisi getKisi(KisiSoyutOlusturma uretme){
+        return uretme.kisiOlustur();
+    }
+}
+public class abstractfactory {
+     public static void main(String[] args) {
+     Kisi doktor = KisiUretme.getKisi(new DoktorUretme());
+     Kisi hasta= KisiUretme.getKisi(new HastaUretme());
+         System.out.println(doktor.unvan());
+         System.out.println(hasta.unvan());
+     
+     
+     
+     }
+    
+    
+}
