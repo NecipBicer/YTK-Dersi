@@ -1,0 +1,37 @@
+@startuml
+
+   class Doktor <<abstract>>{
++ void hastaBak()
++ void ameliyataGir()
+
+}
+
+class Hasta <<abstract>>{
++ void randevuAl()
++ void randevuIptal()
+}
+class Doktor1{
++ void hastaBak()
++ void ameliyataGir()
+}
+class HastaOlanDoktor{
++ Doktor doktor1
++ void randevuAl()
++ void randevuIptal()
+}
+class AdapterPattern{
++ {static} void Donusum(Hasta hasta)
+
+} 
+Doktor1 ..|> Doktor 
+HastaOlanDoktor ..|> Hasta
+AdapterPattern --> Hasta : Adaptee
+
+
+
+
+
+
+
+
+@enduml
